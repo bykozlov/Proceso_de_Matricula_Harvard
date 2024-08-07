@@ -1,0 +1,139 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+
+public class DlgMatricularAlumno extends JDialog {
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JTextField txtCodigo;
+	private JButton btnBuscar;
+	private JTextField txtCelular;
+	private JComboBox cboEstado;
+	private JButton btnAceptar;
+	private JButton btnAdicionar;
+	private JButton btnConsultar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JTable tblAlumno;
+	private JScrollPane scrollPane;
+	private JComboBox comboBox;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgMatricularAlumno dialog = new DlgMatricularAlumno();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgMatricularAlumno() {
+		setBounds(100, 100, 900, 400);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("N\u00FAmero de matr\u00EDcula");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 116, 14);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("C\u00F3digo de alumno");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 45, 116, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Ciclo");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 76, 116, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCodigo.setBounds(136, 11, 100, 20);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setColumns(10);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBuscar.setBounds(246, 10, 146, 23);
+		getContentPane().add(btnBuscar);
+		
+		txtCelular = new JTextField();
+		txtCelular.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCelular.setBounds(246, 42, 302, 20);
+		getContentPane().add(txtCelular);
+		txtCelular.setColumns(10);
+		
+		cboEstado = new JComboBox();
+		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto"}));
+		cboEstado.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cboEstado.setBounds(136, 72, 100, 22);
+		getContentPane().add(cboEstado);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAceptar.setBounds(402, 10, 146, 23);
+		getContentPane().add(btnAceptar);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAdicionar.setBounds(728, 10, 146, 23);
+		getContentPane().add(btnAdicionar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnConsultar.setBounds(728, 41, 146, 23);
+		getContentPane().add(btnConsultar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnModificar.setBounds(728, 72, 146, 23);
+		getContentPane().add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEliminar.setBounds(728, 102, 146, 23);
+		getContentPane().add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 131, 864, 219);
+		getContentPane().add(scrollPane);
+		
+		tblAlumno = new JTable();
+		tblAlumno.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"NUM.MATR\u00CDCULA", "COD.ALUMNO", "CICLO", "FECHA", "HORA"
+			}
+		));
+		scrollPane.setViewportView(tblAlumno);
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"202110011"}));
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		comboBox.setBounds(136, 41, 100, 22);
+		getContentPane().add(comboBox);
+	}
+}

@@ -1,0 +1,279 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+
+import componente.JComboBoxBD1;
+import controlador.MySqlMatriculaAlumnoDAO;
+import entidad.MatriculaAlumno;
+
+import java.awt.event.MouseListener;
+import java.util.List;
+import java.awt.event.MouseEvent;
+import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class DlgMatricularAlumno extends JDialog implements MouseListener, ActionListener {
+	private MySqlMatriculaAlumnoDAO dao = new MySqlMatriculaAlumnoDAO();
+	
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JTextField txtCodMatricula;
+	private JButton btnBuscar;
+	private JTextField txtCelular;
+	private JComboBox cboCiclo;
+	private JButton btnAceptar;
+	private JButton btnAdicionar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JTable tblAlumno;
+	private JScrollPane scrollPane;
+	private JLabel lblNewLabel_3;
+	private JComboBox cboCarrera;
+	private JTextField txtCodAlumno;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JDateChooser dcFecha;
+	private JComboBox cboEstado;
+	private JButton btnNewButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgMatricularAlumno dialog = new DlgMatricularAlumno();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgMatricularAlumno() {
+		setTitle("Matricular Alumno");
+		setBounds(100, 100, 900, 400);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("N\u00FAmero de matr\u00EDcula");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 116, 14);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("C\u00F3digo de alumno");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 45, 116, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Ciclo");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 76, 116, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		txtCodMatricula = new JTextField();
+		txtCodMatricula.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCodMatricula.setBounds(136, 11, 100, 20);
+		getContentPane().add(txtCodMatricula);
+		txtCodMatricula.setColumns(10);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBuscar.setBounds(246, 72, 146, 23);
+		getContentPane().add(btnBuscar);
+		
+		txtCelular = new JTextField();
+		txtCelular.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCelular.setBounds(246, 103, 302, 20);
+		getContentPane().add(txtCelular);
+		txtCelular.setColumns(10);
+		
+		cboCiclo = new JComboBoxBD1("select * from tb_ciclo");
+		cboCiclo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cboCiclo.setBounds(136, 72, 100, 22);
+		getContentPane().add(cboCiclo);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAceptar.setBounds(402, 72, 146, 23);
+		getContentPane().add(btnAceptar);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(this);
+		btnAdicionar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAdicionar.setBounds(728, 10, 146, 23);
+		getContentPane().add(btnAdicionar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnModificar.setBounds(728, 72, 146, 23);
+		getContentPane().add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEliminar.setBounds(728, 102, 146, 23);
+		getContentPane().add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 131, 864, 219);
+		getContentPane().add(scrollPane);
+		
+		tblAlumno = new JTable();
+		tblAlumno.addMouseListener(this);
+		tblAlumno.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"NUM.MATR\u00CDCULA", "COD.ALUMNO", "CICLO", "CARRERA", "ESTADO", "FECHA"
+			}
+		));
+		scrollPane.setViewportView(tblAlumno);
+		
+		lblNewLabel_3 = new JLabel("Carrera");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(10, 107, 116, 14);
+		getContentPane().add(lblNewLabel_3);
+		
+		cboCarrera = new JComboBoxBD1("select * from tb_carrera");
+		cboCarrera.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cboCarrera.setBounds(136, 104, 100, 22);
+		getContentPane().add(cboCarrera);
+		
+		txtCodAlumno = new JTextField();
+		txtCodAlumno.setBounds(136, 43, 100, 20);
+		getContentPane().add(txtCodAlumno);
+		txtCodAlumno.setColumns(10);
+		
+		lblNewLabel_4 = new JLabel("Estado");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(246, 15, 40, 14);
+		getContentPane().add(lblNewLabel_4);
+		
+		lblNewLabel_5 = new JLabel("Fecha");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_5.setBounds(246, 46, 40, 14);
+		getContentPane().add(lblNewLabel_5);
+		
+		dcFecha = new JDateChooser();
+		dcFecha.setDateFormatString("yyyy/MM/dd");
+		dcFecha.setBounds(296, 43, 100, 20);
+		getContentPane().add(dcFecha);
+		
+		cboEstado = new JComboBoxBD1("select * from tbestadoalm");
+		cboEstado.setBounds(296, 11, 100, 22);
+		getContentPane().add(cboEstado);
+		
+		btnNewButton = new JButton("Consultar");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setBounds(728, 42, 146, 23);
+		getContentPane().add(btnNewButton);
+		listado();
+		mostrarDatos(0);
+	}
+	public void mouseClicked(MouseEvent e) {
+		if (e.getSource() == tblAlumno) {
+			mouseClickedTblAlumno(e);
+		}
+	}
+	void mensaje(String m) {
+		JOptionPane.showMessageDialog(this, m);
+	}
+	int getCodigo() {
+		return Integer.parseInt(txtCodMatricula.getText());
+	}
+	int getCodAlumno() {
+		return Integer.parseInt(txtCodAlumno.getText());
+	}
+	int getCodCiclo() {
+		return cboCiclo.getSelectedIndex()+1;
+	}
+	int getCodCarrera() {
+		return cboCarrera.getSelectedIndex()+1;
+	}
+	int getCodEstado() {
+		return cboEstado.getSelectedIndex()+1;
+	}
+	Date getFecha() {
+		return Date.valueOf(dcFecha.getDateFormatString());
+	}
+	void listado() {
+		DefaultTableModel model = (DefaultTableModel) tblAlumno.getModel();
+		model.setRowCount(0);
+		List<MatriculaAlumno> data = dao.listAll();
+		for(MatriculaAlumno ma:data) {
+			Object row[] = {ma.getCodigo(), ma.getCodAlumno(), ma.getNomCiclo(), ma.getNomCarrera(), ma.getNomEstado(), ma.getFecha()};
+			model.addRow(row);
+		}
+	}
+	void mostrarDatos(int posFila) {
+		if(tblAlumno.getRowCount()>0) {
+			txtCodMatricula.setText(tblAlumno.getValueAt(posFila, 0).toString());
+			txtCodAlumno.setText(tblAlumno.getValueAt(posFila, 1).toString());
+			cboCiclo.setSelectedItem(tblAlumno.getValueAt(posFila, 2).toString());
+			cboCarrera.setSelectedItem(tblAlumno.getValueAt(posFila, 3).toString());
+			cboEstado.setSelectedItem(tblAlumno.getValueAt(posFila, 4).toString());
+			dcFecha.setDateFormatString(tblAlumno.getValueAt(posFila, 5).toString());
+		}
+	}
+	void limpiar() {
+		txtCodMatricula.setText("");
+		txtCodAlumno.setText("");
+		cboCiclo.setSelectedIndex(0);
+		cboCarrera.setSelectedIndex(0);
+		cboEstado.setSelectedIndex(0);
+		dcFecha.setDateFormatString("");
+	}
+	public void mouseEntered(MouseEvent e) {
+	}
+	public void mouseExited(MouseEvent e) {
+	}
+	public void mousePressed(MouseEvent e) {
+	}
+	public void mouseReleased(MouseEvent e) {
+	}
+	protected void mouseClickedTblAlumno(MouseEvent e) {
+		int fila;
+		fila = tblAlumno.getSelectedRow();
+		mostrarDatos(fila);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAdicionar) {
+			actionPerformedBtnAdicionar(e);
+		}
+	}
+	protected void actionPerformedBtnAdicionar(ActionEvent e) {
+		MatriculaAlumno ma = new MatriculaAlumno();
+		ma.setCodAlumno(getCodAlumno());
+		ma.setCodCiclo(getCodCiclo());
+		ma.setCodCarrera(getCodCarrera());
+		ma.setCodEstado(getCodEstado());
+		ma.setFecha(getFecha());
+		int salida;
+		salida = dao.guardar(ma);
+		if(salida > 0) {
+			mensaje("Alumno registrado");
+			listado();
+		}
+		else
+			mensaje("Registro denegado");
+	}
+}

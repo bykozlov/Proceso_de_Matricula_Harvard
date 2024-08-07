@@ -1,0 +1,66 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+
+public class DlgConsultaNotas extends JFrame {
+
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JTextField textField;
+	private JComboBox cboAsignatura;
+	private JButton btnNotas;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DlgConsultaNotas frame = new DlgConsultaNotas();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public DlgConsultaNotas() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 561, 484);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Cod. Alumno");
+		lblNewLabel.setBounds(23, 26, 74, 14);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(107, 23, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		cboAsignatura = new JComboBox();
+		cboAsignatura.setBounds(217, 22, 127, 20);
+		contentPane.add(cboAsignatura);
+		
+		btnNotas = new JButton("Mostrar Notas");
+		btnNotas.setBounds(377, 22, 89, 23);
+		contentPane.add(btnNotas);
+	}
+}

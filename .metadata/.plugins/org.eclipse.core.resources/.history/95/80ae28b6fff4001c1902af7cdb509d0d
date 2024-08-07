@@ -1,0 +1,64 @@
+package entidad;
+
+import java.sql.Date;
+
+public class MatriculaAlumno {
+	private int codigo, codAlumno, codCiclo, codCarrera, codEstado;
+	private Date fecha;
+	private String nomCiclo, nomCarrera, nomEstado;
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public int getCodAlumno() {
+		return codAlumno;
+	}
+	public void setCodAlumno(int codAlumno) {
+		this.codAlumno = codAlumno;
+	}
+	public int getCodCiclo() {
+		return codCiclo;
+	}
+	public void setCodCiclo(int codCiclo) {
+		this.codCiclo = codCiclo;
+	}
+	public int getCodCarrera() {
+		return codCarrera;
+	}
+	public void setCodCarrera(int codCarrera) {
+		this.codCarrera = codCarrera;
+	}
+	public int getCodEstado() {
+		return codEstado;
+	}
+	public void setCodEstado(int codEstado) {
+		this.codEstado = codEstado;
+	}
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	public String getNomCiclo() {
+		return nomCiclo;
+	}
+	public void setNomCiclo(String nomCiclo) {
+		this.nomCiclo = nomCiclo;
+	}
+	public String getNomCarrera() {
+		return nomCarrera;
+	}
+	public void setNomCarrera(String nomCarrera) {
+		this.nomCarrera = nomCarrera;
+	}
+	public String getNomEstado() {
+		return nomEstado;
+	}
+	public void setNomEstado(String nomEstado) {
+		this.nomEstado = nomEstado;
+	}
+}

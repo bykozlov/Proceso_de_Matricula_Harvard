@@ -1,0 +1,44 @@
+package controlador;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import entidad.Alumno;
+import utils.MySqlConexion;
+
+public class MySqlSolicitante {
+	/* SAVE */
+	@Override
+	public int save(Alumno bean) {
+		 int salida = -1;
+		 Connection cn = null;
+		 PreparedStatement pstm = null;
+		 try {
+			 cn = MySqlConexion.getConexion();
+			 String sql = "insert into tb_Alumno values(null, ?,?,?,?,?,?,?)";
+			 pstm = cn.prepareStatement(sql);
+
+			 pstm.setString(1, bean.getNombre());
+			 pstm.setString(2, bean.getApellido()); 
+			 pstm.setInt(3, bean.getDni());
+			 pstm.setInt(5, bean.getEdad());
+			 pstm.setInt(4, bean.getCelular());
+			 pstm.setString(6,bean.getSexo());
+			 pstm.setString(7, bean.getFecha());
+
+			 salida = pstm.executeUpdate();
+		 } catch (SQLException e) {
+			e.printStackTrace();
+		 }
+		 finally {
+			 try {
+				 if(pstm != null) pstm.close();
+				 if(cn != null) cn.close();
+			 } catch (SQLException e2) {
+				 e2.printStackTrace();
+			 }
+		 }
+		 return salida;
+	}
+}

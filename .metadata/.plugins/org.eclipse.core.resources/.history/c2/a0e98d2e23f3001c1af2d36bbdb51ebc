@@ -1,0 +1,49 @@
+package entidad;
+
+public class Consulta {
+	public int codMatricula,codCiclo,codEstado,codAlum;
+	public String nomEstado,nomCiclo,nomAlum;
+	public int getCodMatricula() {
+		return codMatricula;
+	}
+	public void setCodMatricula(int codMatricula) {
+		this.codMatricula = codMatricula;
+	}
+	public int getCodCiclo() {
+		return codCiclo;
+	}
+	public void setCodCiclo(int codCiclo) {
+		this.codCiclo = codCiclo;
+	}
+	public int getCodEstado() {
+		return codEstado;
+	}
+	public void setCodEstado(int codEstado) {
+		this.codEstado = codEstado;
+	}
+	public int getCodAlum() {
+		return codAlum;
+	}
+	public void setCodAlum(int codAlum) {
+		this.codAlum = codAlum;
+	}
+	public String getNomEstado() {
+		return nomEstado;
+	}
+	public void setNomEstado(String nomEstado) {
+		this.nomEstado = nomEstado;
+	}
+	public String getNomCiclo() {
+		return nomCiclo;
+	}
+	public void setNomCiclo(String nomCiclo) {
+		this.nomCiclo = nomCiclo;
+	}
+	public String getNomAlum() {
+		return nomAlum;
+	}
+	public void setNomAlum(String nomAlum) {
+		this.nomAlum = nomAlum;
+	}
+	
+}	

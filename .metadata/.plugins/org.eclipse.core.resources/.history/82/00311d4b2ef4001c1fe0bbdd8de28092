@@ -1,0 +1,3 @@
+sql_tipousu = select * from tipoemple
+
+sql_estado = select * from tbestadoalm

@@ -1,0 +1,66 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+public class DlgConsultarAlumnoCurso extends JDialog {
+	private JLabel lblNewLabel;
+	private JTextField txtCodAlumno;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
+	private JButton btnMostrarAlumno;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultarAlumnoCurso dialog = new DlgConsultarAlumnoCurso();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultarAlumnoCurso() {
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("C\u00F3digo de alumno");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 32, 100, 14);
+		getContentPane().add(lblNewLabel);
+		
+		txtCodAlumno = new JTextField();
+		txtCodAlumno.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCodAlumno.setBounds(157, 29, 100, 20);
+		getContentPane().add(txtCodAlumno);
+		txtCodAlumno.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 78, 414, 172);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		scrollPane.setViewportView(txtResultado);
+		
+		btnMostrarAlumno = new JButton("Mostrar Alumno");
+		btnMostrarAlumno.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnMostrarAlumno.setBounds(304, 28, 120, 23);
+		getContentPane().add(btnMostrarAlumno);
+	}
+}

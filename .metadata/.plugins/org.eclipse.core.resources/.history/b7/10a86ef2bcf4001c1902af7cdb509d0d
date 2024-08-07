@@ -1,0 +1,59 @@
+package controlador;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.List;
+
+import entidad.MatriculaAlumno;
+import interfaces.MatriculaAlumnoDAO;
+import utils.MySqlConexion;
+
+public class MySqlMatriculaAlumno implements MatriculaAlumnoDAO {
+
+	@Override
+	public int guardar(MatriculaAlumno ma) {
+		int salida = -1;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		try {
+			cn = MySqlConexion.getConexion();
+			String sql = "insert into tb_RegMatricula values(null, ?, ?, ?, ?, ?)";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, ma.getCodAlumno());
+			pstm.setInt(1, ma.getCodAlumno());
+			pstm.setInt(1, ma.getCodAlumno());
+			pstm.setInt(1, ma.getCodAlumno());
+			salida = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm != null) pstm.close();
+				if(cn != null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return salida;
+	}
+
+	@Override
+	public int actualizar(MatriculaAlumno ma) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int eliminar(int cod) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<MatriculaAlumno> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

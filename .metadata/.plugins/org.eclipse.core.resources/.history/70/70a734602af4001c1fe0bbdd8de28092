@@ -1,0 +1,6 @@
+package entidad;
+
+public class Curso {
+	private int cod, ciclo, credi, horas, codCiclo;
+	private String asignatura, nom_ciclo;
+}

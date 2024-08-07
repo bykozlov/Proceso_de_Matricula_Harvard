@@ -1,0 +1,75 @@
+create database ProyectoHarvard_2022;
+use ProyectoHarvard_2022;
+
+create table tbEstadoAlm /*Matriculado o retirado*/
+(
+idEstado int primary key,
+nom_Alm varchar(30)
+);
+create table tbTrabaja /*Coordinador o secretaria*/
+(
+idEstado_Tra int primary key,
+nom_Tra varchar(30)
+);
+
+create table tb_Carrera(
+	cod_Carrera int primary key unique,
+	nombre varchar(80) not null,
+	ciclo int not null
+);
+create table tb_Alumno
+(
+idAlumno int primary key unique,
+idEstado int,
+nom_alm varchar(50) not null,
+ape_alm varchar(50) not null,
+dni_alm int unique,
+celar_alm varchar(50) not null,
+edad char(2),
+sexo char(1),
+telefono char(9),
+cod_Carrera int,
+FechaRegistro date,
+foreign key (cod_Carrera) references tb_Carrera(cod_Carrera),
+foreign key (idEstado) references tbEstadoAlm(idEstado),
+check(EdadAlum >=18),
+check(Sexo in ('F','M'))
+);
+
+create table login
+(
+cod_usu int primary key auto_increment,
+nom_usu varchar(30),
+ape_usu varchar(30),
+usuario varchar(15) unique,
+clave varchar(12)
+);
+
+create table registro(
+idRegistro int auto_increment not null,
+tipo_tra int,
+usuario varchar(45) not null,
+clave varchar(45) not null,
+nom varchar(45) not null,
+ape varchar(45) not null,
+correo varchar(45) not null,
+fechaDeIngreso datetime,
+primary key (idRegistro)
+);
+create table tb_Asignatura(
+	cod_Asig int auto_increment primary key,
+	nombre_Asig varchar(80) not null,
+	creditos int not null,
+	nivel int not null
+);
+create table TB_EstudianteAsigantura(
+	idAlumno int,
+	cod_Asig int,
+	nota1 int,
+	nota2 int,
+	nota3 int,
+	nota4 int,
+    foreign key(idAlumno ) references tb_Alumno(idAlumno),
+	foreign key(cod_Asig ) references tb_Asignatura(cod_Asig)
+);
+

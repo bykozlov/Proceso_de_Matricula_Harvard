@@ -1,0 +1,45 @@
+package controlador;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import entidad.Alumno;
+import entidad.Solicitante;
+import interfaces.SolicitanteDAO;
+import utils.MySqlConexion;
+
+public class MySqlSolicitante implements SolicitanteDAO {
+	/* SAVE */
+	@Override
+	public int guardar(Solicitante so) {
+		 int salida = -1;
+		 Connection cn = null;
+		 PreparedStatement pstm = null;
+		 try {
+			 cn = MySqlConexion.getConexion();
+			 String sql = "insert into tb_Solicitante values(null, ?,?,?,?,?,?,?)";
+			 pstm = cn.prepareStatement(sql);
+
+			 pstm.setInt(1, so.getDni());
+			 pstm.setString(1, so.getNombre());
+			 pstm.setString(2, so.getApellido()); 
+			 pstm.setInt(5, so.getEdad());
+			 pstm.setInt(4, so.getCelular());
+			 pstm.setString(6, so.getSexo());
+
+			 salida = pstm.executeUpdate();
+		 } catch (SQLException e) {
+			e.printStackTrace();
+		 }
+		 finally {
+			 try {
+				 if(pstm != null) pstm.close();
+				 if(cn != null) cn.close();
+			 } catch (SQLException e2) {
+				 e2.printStackTrace();
+			 }
+		 }
+		 return salida;
+	}
+}

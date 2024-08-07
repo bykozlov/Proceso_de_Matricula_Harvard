@@ -1,0 +1,6 @@
+INDEX VERSION 1.132+D:\tercer ciclo\LENGUAJE DE PROGRAMACION\Proyecto final\Proyecto-LP1-T3IN\.metadata\.plugins\org.eclipse.jdt.core
+3749305839.index
+830993095.index
+1865797976.index
+1364470660.index
+3402250818.index

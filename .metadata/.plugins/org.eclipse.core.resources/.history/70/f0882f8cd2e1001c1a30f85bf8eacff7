@@ -1,0 +1,75 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+
+public class DlgConsultas extends JDialog implements ActionListener {
+	private JLabel lblNewLabel;
+	private JButton btnMostrarAlumno;
+	private JTextField txtCodigodeAlumno;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultas dialog = new DlgConsultas();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultas() {
+		setBounds(100, 100, 473, 300);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("Codigo de alumno");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(10, 43, 137, 13);
+		getContentPane().add(lblNewLabel);
+		
+		btnMostrarAlumno = new JButton("Mostrar Alumno");
+		btnMostrarAlumno.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnMostrarAlumno.addActionListener(this);
+		btnMostrarAlumno.setBounds(292, 39, 134, 21);
+		getContentPane().add(btnMostrarAlumno);
+		
+		txtCodigodeAlumno = new JTextField();
+		txtCodigodeAlumno.setBounds(157, 40, 125, 19);
+		getContentPane().add(txtCodigodeAlumno);
+		txtCodigodeAlumno.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 100, 416, 153);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		scrollPane.setViewportView(txtResultado);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnMostrarAlumno) {
+			actionPerformedBtnNewButton(e);
+		}
+	}
+	protected void actionPerformedBtnNewButton(ActionEvent e) {
+	}
+}

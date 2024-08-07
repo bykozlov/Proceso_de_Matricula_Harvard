@@ -1,0 +1,185 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+
+public class DlgRegistrarSolicitante extends JDialog {
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JTextField txtCodigo;
+	private JTextField txtDni;
+	private JTextField txtNombres;
+	private JTextField txtApellidos;
+	private JLabel lblNewLabel_4;
+	private JTextField txtEdad;
+	private JButton btnBuscar;
+	private JLabel lblNewLabel_5;
+	private JLabel lblNewLabel_6;
+	private JTextField txtCelular;
+	private JComboBox cboEstado;
+	private JButton btnAceptar;
+	private JButton btnAdicionar;
+	private JButton btnConsultar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JTable table;
+	private JScrollPane scrollPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgRegistrarSolicitante dialog = new DlgRegistrarSolicitante();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgRegistrarSolicitante() {
+		setBounds(100, 100, 784, 400);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("C\u00F3digo");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 64, 14);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("DNI");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 45, 64, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Nombres");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 76, 64, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("Apellidos");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(10, 106, 64, 14);
+		getContentPane().add(lblNewLabel_3);
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCodigo.setBounds(84, 11, 114, 20);
+		getContentPane().add(txtCodigo);
+		txtCodigo.setColumns(10);
+		
+		txtDni = new JTextField();
+		txtDni.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtDni.setBounds(84, 42, 72, 20);
+		getContentPane().add(txtDni);
+		txtDni.setColumns(10);
+		
+		txtNombres = new JTextField();
+		txtNombres.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtNombres.setBounds(84, 73, 196, 20);
+		getContentPane().add(txtNombres);
+		txtNombres.setColumns(10);
+		
+		txtApellidos = new JTextField();
+		txtApellidos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtApellidos.setBounds(84, 103, 196, 20);
+		getContentPane().add(txtApellidos);
+		txtApellidos.setColumns(10);
+		
+		lblNewLabel_4 = new JLabel("Edad");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(166, 45, 32, 14);
+		getContentPane().add(lblNewLabel_4);
+		
+		txtEdad = new JTextField();
+		txtEdad.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtEdad.setBounds(208, 42, 72, 20);
+		getContentPane().add(txtEdad);
+		txtEdad.setColumns(10);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBuscar.setBounds(208, 10, 72, 23);
+		getContentPane().add(btnBuscar);
+		
+		lblNewLabel_5 = new JLabel("Estado");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_5.setBounds(300, 14, 48, 14);
+		getContentPane().add(lblNewLabel_5);
+		
+		lblNewLabel_6 = new JLabel("Celular");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_6.setBounds(300, 45, 48, 14);
+		getContentPane().add(lblNewLabel_6);
+		
+		txtCelular = new JTextField();
+		txtCelular.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCelular.setBounds(358, 42, 88, 20);
+		getContentPane().add(txtCelular);
+		txtCelular.setColumns(10);
+		
+		cboEstado = new JComboBox();
+		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"Registrado", "Matriculado", "Retirado"}));
+		cboEstado.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cboEstado.setBounds(358, 10, 88, 22);
+		getContentPane().add(cboEstado);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAceptar.setBounds(300, 72, 146, 23);
+		getContentPane().add(btnAceptar);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAdicionar.setBounds(612, 10, 146, 23);
+		getContentPane().add(btnAdicionar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnConsultar.setBounds(612, 41, 146, 23);
+		getContentPane().add(btnConsultar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnModificar.setBounds(612, 72, 146, 23);
+		getContentPane().add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEliminar.setBounds(612, 102, 146, 23);
+		getContentPane().add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 131, 748, 219);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"C\u00D3DIGO DE ALUMNO", "NOMBRES", "APELLIDOS", "DNI", "EDAD", "CELULAR", "ESTADO"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(112);
+		scrollPane.setViewportView(table);
+	}
+}

@@ -1,0 +1,202 @@
+package com.proyecto.gui;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+
+import javax.swing.JButton;
+import java.awt.Font;
+import java.util.ResourceBundle;
+
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.proyecto.componente.JComboBoxBD;
+import com.proyecto.componente.JComboBoxBD1;
+import com.proyecto.controlador.MySQLAlumnoDAO;
+import com.proyecto.controlador.MySQLMantenimientoDAO;
+import com.proyecto.entidad.Alumno;
+import com.proyecto.entidad.Curso;
+import com.proyecto.interfaces.CursoDAO;
+import com.proyecto.utils.Libreria;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PanelRegMatriculacion extends JPanel implements ActionListener {
+
+	private MySQLMantenimientoDAO MantemientoDAO = new MySQLMantenimientoDAO();
+	
+	ResourceBundle rb = ResourceBundle.getBundle("SENTENCIAS_SQL");
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel lblCodMatricula;
+	private JLabel lblCodAlumno;
+	private JLabel lblCiclos;
+	private JLabel lblEstados;
+	private JTextField txtCodMatricula;
+	private JTextField txtNombres;
+	private JComboBox cboCodAlumno;
+	private JComboBox cboCiclos;
+	private JComboBox cboEstados;
+	private JButton btnAdicionar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JLabel lblImagen;
+	private JScrollPane scrollPane;
+	private JTable tblMatriculacion;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelRegMatriculacion() {
+		setBackground(new Color(0, 206, 209));
+		setBounds(0, 0, 650, 415);
+		setLayout(null);
+		setVisible(true);
+		
+		lblCodMatricula = new JLabel("C\u00F3digo Matr\u00EDcula:");
+		lblCodMatricula.setBounds(10, 11, 105, 14);
+		add(lblCodMatricula);
+		
+		lblCodAlumno = new JLabel("C\u00F3digo Alumno:");
+		lblCodAlumno.setBounds(10, 36, 94, 14);
+		add(lblCodAlumno);
+		
+		lblCiclos = new JLabel("Ciclos:");
+		lblCiclos.setBounds(10, 92, 39, 14);
+		add(lblCiclos);
+		
+		lblEstados = new JLabel("Estados:");
+		lblEstados.setBounds(145, 92, 55, 14);
+		add(lblEstados);
+		
+		txtCodMatricula = new JTextField();
+		txtCodMatricula.setBounds(114, 8, 183, 20);
+		add(txtCodMatricula);
+		txtCodMatricula.setColumns(10);
+		
+		txtNombres = new JTextField();
+		txtNombres.setBounds(10, 61, 287, 20);
+		add(txtNombres);
+		txtNombres.setColumns(10);
+		
+		cboCodAlumno =new JComboBoxBD1(rb.getString("sql_alumno"));;
+		cboCodAlumno.setBounds(114, 32, 183, 22);
+		add(cboCodAlumno);
+		
+		cboCiclos = new JComboBoxBD(rb.getString("sql_ciclo"));;
+		cboCiclos.setBounds(53, 88, 85, 22);
+		add(cboCiclos);
+		
+		cboEstados = new JComboBoxBD(rb.getString("sql_estado"));;
+		cboEstados.setBounds(197, 88, 100, 22);
+		add(cboEstados);
+		
+		btnAdicionar = new JButton("ADICIONAR");
+		btnAdicionar.addActionListener(this);
+		btnAdicionar.setIcon(new ImageIcon(PanelRegMatriculacion.class.getResource("/img/adicionar.png")));
+		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnAdicionar.setBounds(492, 7, 148, 23);
+		add(btnAdicionar);
+		
+		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setIcon(new ImageIcon(PanelRegMatriculacion.class.getResource("/img/modificar.png")));
+		btnModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnModificar.setBounds(492, 48, 148, 23);
+		add(btnModificar);
+		
+		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setIcon(new ImageIcon(PanelRegMatriculacion.class.getResource("/img/eliminar.png")));
+		btnEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnEliminar.setBounds(492, 88, 148, 23);
+		add(btnEliminar);
+		
+		lblImagen = new JLabel("");
+		lblImagen.setIcon(new ImageIcon(PanelRegMatriculacion.class.getResource("/img/registrar.png")));
+		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImagen.setBounds(315, 11, 169, 95);
+		add(lblImagen);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 129, 630, 275);
+		add(scrollPane);
+		
+		tblMatriculacion = new JTable();
+		tblMatriculacion.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"CÓDIGO MATRICULA", "NOMBRE", "CICLO", "ESTADO","FECHA"
+			}
+		));
+		tblMatriculacion.setFillsViewportHeight(true);
+		scrollPane.setViewportView(tblMatriculacion);
+
+	/*
+	// Declaración global
+	
+	Alumno  aa= new Alumno();
+	
+	public void actionPerformed(ActionEvent e) {
+	if(e.getSource() == cboCodAlumno) {
+		actionPerformedCmb_CodigoAlumno(e);
+	}
+	
+	}
+	
+	protected void actionPerformedCmb_CodigoAlumno(ActionEvent e) {
+			txtNombres.setText(aa.getNombre() + " " + aa.getApellido());
+		
+	}
+
+	*/
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAdicionar) {
+			actionPerformedBtnAdicionar(e);
+		}
+	}
+	protected void actionPerformedBtnAdicionar(ActionEvent e) {
+		
+		//variables
+	    String asignatura, creditos, horas;
+
+			asignatura = txtAsignatura.getText(); 
+			creditos = txtCreditos.getText();
+			horas = txtHoras.getText();
+			
+			int cod;
+			cod=Libreria.findByEstado(cboCiclos.getSelectedItem().toString(),
+					rb.getString("tablas_ciclo"),rb.getString("campos_ciclo"));
+
+			Curso bean=new Curso();
+
+			bean.setNomCurso(asignatura);
+			bean.setCreditos(Integer.parseInt(creditos));
+			bean.setHoras(Integer.parseInt(horas));
+			bean.setCodCiclo(cod);
+
+			int resultado;
+			resultado = CursoDAO.save(bean);
+
+			if(resultado == 1) {
+				mensaje("Curso Añadido");
+				
+			}
+			else
+				mensaje("Error al añadir curso");
+	}
+	
+	void mensaje(String m) {
+		JOptionPane.showMessageDialog(null, m);
+	}
+	}

@@ -1,0 +1,6 @@
+package entidad;
+
+public class MatriculaAlumno {
+	private int codigo, codAlumno, codCiclo, codCarrera, codEstado;
+	private Date fecha;
+}

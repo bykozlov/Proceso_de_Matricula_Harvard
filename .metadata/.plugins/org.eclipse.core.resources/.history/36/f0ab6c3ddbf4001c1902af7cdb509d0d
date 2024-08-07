@@ -1,0 +1,9 @@
+sql_tipousu = select * from tipoemple
+
+sql_estado = select * from tbestadoalm
+
+sql_ciclo = select * from tb_ciclo
+
+sql_carrera = select * from tb_carrera
+
+sql_alumno = select * from tb_alumno

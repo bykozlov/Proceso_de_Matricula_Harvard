@@ -1,0 +1,66 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+public class DlgConsultarAlumnoCurso extends JDialog {
+	private JLabel lblNewLabel;
+	private JTextField textField;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+	private JButton btnNewButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultarAlumnoCurso dialog = new DlgConsultarAlumnoCurso();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultarAlumnoCurso() {
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("C\u00F3digo de alumno");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 32, 100, 14);
+		getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textField.setBounds(120, 29, 86, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 78, 414, 172);
+		getContentPane().add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		btnNewButton = new JButton("Mostrar Alumno");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setBounds(308, 28, 120, 23);
+		getContentPane().add(btnNewButton);
+	}
+}

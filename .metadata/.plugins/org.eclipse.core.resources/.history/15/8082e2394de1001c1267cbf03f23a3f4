@@ -1,0 +1,148 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+
+public class DlgRegistrarSolicitante extends JDialog {
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JTextField txtDni;
+	private JTextField txtNombres;
+	private JTextField txtApellidos;
+	private JLabel lblNewLabel_4;
+	private JTextField txtEdad;
+	private JLabel lblNewLabel_5;
+	private JLabel lblNewLabel_3;
+	private JTextField txtEmail;
+	private JButton btnAdicionar;
+	private JButton btnEliminar;
+	private JTable table;
+	private JScrollPane scrollPane;
+	private JTextField txtCelular;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgRegistrarSolicitante dialog = new DlgRegistrarSolicitante();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgRegistrarSolicitante() {
+		setBounds(100, 100, 784, 400);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("DNI");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 64, 14);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Nombres");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 45, 64, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Apellidos");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 76, 64, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		txtDni = new JTextField();
+		txtDni.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtDni.setBounds(84, 11, 64, 20);
+		getContentPane().add(txtDni);
+		txtDni.setColumns(10);
+		
+		txtNombres = new JTextField();
+		txtNombres.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtNombres.setBounds(84, 42, 180, 20);
+		getContentPane().add(txtNombres);
+		txtNombres.setColumns(10);
+		
+		txtApellidos = new JTextField();
+		txtApellidos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtApellidos.setBounds(84, 73, 180, 20);
+		getContentPane().add(txtApellidos);
+		txtApellidos.setColumns(10);
+		
+		lblNewLabel_4 = new JLabel("Edad");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(158, 14, 32, 14);
+		getContentPane().add(lblNewLabel_4);
+		
+		txtEdad = new JTextField();
+		txtEdad.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtEdad.setBounds(200, 11, 64, 20);
+		getContentPane().add(txtEdad);
+		txtEdad.setColumns(10);
+		
+		lblNewLabel_5 = new JLabel("Celular");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_5.setBounds(274, 14, 64, 14);
+		getContentPane().add(lblNewLabel_5);
+		
+		lblNewLabel_3 = new JLabel("E-mail");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(10, 107, 64, 14);
+		getContentPane().add(lblNewLabel_3);
+		
+		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtEmail.setBounds(84, 104, 180, 20);
+		getContentPane().add(txtEmail);
+		txtEmail.setColumns(10);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAdicionar.setBounds(612, 10, 146, 23);
+		getContentPane().add(btnAdicionar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEliminar.setBounds(612, 41, 146, 23);
+		getContentPane().add(btnEliminar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 131, 748, 219);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"DNI", "EDAD", "NOMBRES", "APELLIDOS", "E-MAIL", "CELULAR"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		txtCelular = new JTextField();
+		txtCelular.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCelular.setColumns(10);
+		txtCelular.setBounds(348, 11, 72, 20);
+		getContentPane().add(txtCelular);
+	}
+}

@@ -1,0 +1,81 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import componente.JComboBoxBD;
+import controlador.MySqlConsultasDAO;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.util.ResourceBundle;
+
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+
+public class DlgConsultarAlumnoCurso extends JDialog {
+	private MySqlConsultasDAO ConsultasDAO = new MySqlConsultasDAO();
+	ResourceBundle p = ResourceBundle.getBundle("SENTENCIAS_SQL");
+	private JLabel lblNewLabel;
+	private JTextField txtCodAlumno;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
+	private JButton btnMostrarAlumno;
+	private JComboBox comboBox;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultarAlumnoCurso dialog = new DlgConsultarAlumnoCurso();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultarAlumnoCurso() {
+		setTitle("Consultar Alumno y Curso");
+		setBounds(100, 100, 572, 542);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("Nombre de alumno");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 32, 127, 14);
+		getContentPane().add(lblNewLabel);
+		
+		txtCodAlumno = new JTextField();
+		txtCodAlumno.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtCodAlumno.setBounds(147, 29, 100, 20);
+		getContentPane().add(txtCodAlumno);
+		txtCodAlumno.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 78, 536, 414);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		scrollPane.setViewportView(txtResultado);
+		
+		btnMostrarAlumno = new JButton("Mostrar Alumno");
+		btnMostrarAlumno.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnMostrarAlumno.setBounds(405, 28, 120, 23);
+		getContentPane().add(btnMostrarAlumno);
+		
+		comboBox = new JComboBoxBD(p.getString("sql_estado"), 2,"TODOS");
+		comboBox.setBounds(273, 29, 100, 20);
+		getContentPane().add(comboBox);
+	}
+}

@@ -1,0 +1,154 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class FrmRetirar extends JFrame {
+
+	private JPanel contentPane;
+	private JLabel lblNmeroDeRetiro;
+	private JTextField textField;
+	private JLabel lblNmeroDeMatrcula;
+	private JLabel label3;
+	private JComboBox cboCodAlumno;
+	private JComboBox cboCiclo;
+	private JButton btnBuscar;
+	private JButton btnAceptar;
+	private JTextField textField_1;
+	private JScrollPane scrollPane;
+	private JButton btnAdicionar;
+	private JButton btnConsultar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JLabel lblNmeroDeRetiro_1;
+	private JComboBox cboCodAlumno_1;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FrmRetirar frame = new FrmRetirar();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public FrmRetirar() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 830, 383);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNmeroDeRetiro = new JLabel("Número de Retiro");
+		lblNmeroDeRetiro.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNmeroDeRetiro.setBounds(10, 14, 119, 14);
+		contentPane.add(lblNmeroDeRetiro);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(139, 12, 110, 20);
+		contentPane.add(textField);
+		
+		lblNmeroDeMatrcula = new JLabel("Número de Matrícula");
+		lblNmeroDeMatrcula.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNmeroDeMatrcula.setBounds(10, 48, 119, 14);
+		contentPane.add(lblNmeroDeMatrcula);
+		
+		label3 = new JLabel("Ciclo:");
+		label3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label3.setBounds(10, 119, 119, 14);
+		contentPane.add(label3);
+		
+		cboCodAlumno = new JComboBox();
+		cboCodAlumno.setBounds(139, 45, 110, 22);
+		contentPane.add(cboCodAlumno);
+		
+		cboCiclo = new JComboBox();
+		cboCiclo.setBounds(139, 116, 110, 22);
+		contentPane.add(cboCiclo);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(259, 11, 150, 23);
+		contentPane.add(btnBuscar);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(419, 11, 150, 23);
+		contentPane.add(btnAceptar);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textField_1.setColumns(10);
+		textField_1.setBounds(259, 46, 310, 21);
+		contentPane.add(textField_1);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 149, 794, 190);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Num. Retiro", "Num. Matr\u00EDcula", "Cod. Alumno", "Ciclo", "Cursos Totales", "Cursos Retirados", "Retiro efectivo", "Fecha", "Hora"
+			}
+		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(85);
+		table.getColumnModel().getColumn(3).setPreferredWidth(68);
+		table.getColumnModel().getColumn(4).setPreferredWidth(84);
+		table.getColumnModel().getColumn(5).setPreferredWidth(94);
+		table.getColumnModel().getColumn(6).setPreferredWidth(84);
+		table.getColumnModel().getColumn(7).setPreferredWidth(90);
+		scrollPane.setViewportView(table);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(654, 11, 150, 23);
+		contentPane.add(btnAdicionar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(654, 45, 150, 23);
+		contentPane.add(btnConsultar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(654, 81, 150, 23);
+		contentPane.add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(654, 115, 150, 23);
+		contentPane.add(btnEliminar);
+		
+		lblNmeroDeRetiro_1 = new JLabel("Número de Retiro");
+		lblNmeroDeRetiro_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNmeroDeRetiro_1.setBounds(10, 85, 119, 14);
+		contentPane.add(lblNmeroDeRetiro_1);
+		
+		cboCodAlumno_1 = new JComboBox();
+		cboCodAlumno_1.setBounds(139, 82, 110, 22);
+		contentPane.add(cboCodAlumno_1);
+	}
+
+}

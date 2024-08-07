@@ -1,0 +1,85 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+public class DlgConsultarMatriculaRetiro extends JDialog {
+	private JLabel lblNewLabel;
+	private JTextField textField;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+	private JButton btnNewButton;
+	private JLabel lblNewLabel_1;
+	private JButton btnNewButton_1;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultarMatriculaRetiro dialog = new DlgConsultarMatriculaRetiro();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultarMatriculaRetiro() {
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("N\u00FAmero de matr\u00EDcula");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 116, 14);
+		getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textField.setBounds(136, 11, 116, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 78, 414, 172);
+		getContentPane().add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		btnNewButton = new JButton("Mostrar Matr\u00EDcula");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setBounds(296, 10, 128, 23);
+		getContentPane().add(btnNewButton);
+		
+		lblNewLabel_1 = new JLabel("N\u00FAmero de retiro");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(10, 45, 116, 14);
+		getContentPane().add(lblNewLabel_1);
+		
+		btnNewButton_1 = new JButton("Mostrar Retiro");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton_1.setBounds(296, 41, 128, 23);
+		getContentPane().add(btnNewButton_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textField_1.setBounds(136, 43, 116, 20);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+	}
+}

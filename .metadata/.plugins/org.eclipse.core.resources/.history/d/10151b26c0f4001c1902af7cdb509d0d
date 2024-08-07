@@ -1,0 +1,136 @@
+package controlador;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entidad.MatriculaAlumno;
+import interfaces.MatriculaAlumnoDAO;
+import utils.MySqlConexion;
+
+public class MySqlMatriculaAlumno implements MatriculaAlumnoDAO {
+
+	@Override
+	public int guardar(MatriculaAlumno ma) {
+		int salida = -1;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		try {
+			cn = MySqlConexion.getConexion();
+			String sql = "insert into tb_RegMatricula values(null, ?, ?, ?, ?, ?)";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, ma.getCodAlumno());
+			pstm.setInt(2, ma.getCodCiclo());
+			pstm.setInt(3, ma.getCodCarrera());
+			pstm.setInt(4, ma.getCodEstado());
+			pstm.setDate(5, ma.getFecha());
+			salida = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm != null) pstm.close();
+				if(cn != null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return salida;
+	}
+
+	@Override
+	public int actualizar(MatriculaAlumno ma) {
+		int salida = -1;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		try {
+			cn = MySqlConexion.getConexion();
+			String sql = "update tb_RegMatricula set idAlumno=?, codCiclo=?, cod_carrera=?, idEstado=?, fecha=? where codMatricula=?";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, ma.getCodAlumno());
+			pstm.setInt(2, ma.getCodCiclo());
+			pstm.setInt(3, ma.getCodCarrera());
+			pstm.setInt(4, ma.getCodEstado());
+			pstm.setDate(5, ma.getFecha());
+			pstm.setInt(6, ma.getCodigo());
+			salida = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm != null) pstm.close();
+				if(cn != null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return salida;
+	}
+
+	@Override
+	public int eliminar(int cod) {
+		int salida = -1;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		try {
+			cn = MySqlConexion.getConexion();
+			String sql = "delete from tb_RegMatricula where codMatricula=?";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, cod);
+			salida = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm != null) pstm.close();
+				if(cn != null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return salida;
+	}
+
+	@Override
+	public List<MatriculaAlumno> listAll() {
+		List<MatriculaAlumno> lista = new ArrayList<MatriculaAlumno>();
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			cn = MySqlConexion.getConexion();
+			String sql = "select emp.cod_empleado, emp.nom_empleado, emp.ape_empleado, emp.dni_empleado, emp.num_hijos, emp.sueldo, dist.nom_distrito from tb_empleado emp\r\n"
+					+ "join tb_distrito dist on dist.cod_distrito=emp.cod_distrito";
+			pstm = cn.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				MatriculaAlumno ma = new MatriculaAlumno();
+				ma.setCodigo(rs.getInt(1));
+				ma.setCodAlumno(rs.getInt(2));
+				ma.setNomCiclo(rs.getString(3));
+				ma.setNomCarrera(rs.getString(4));
+				ma.setNomEstado(rs.getString(5));
+				lista.add(emp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstm != null) pstm.close();
+				if(cn != null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return lista;
+	}
+
+}

@@ -1,0 +1,93 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+
+public class DlgMatriculas extends JDialog implements ActionListener {
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JButton btnMostrarMatricula;
+	private JButton btnMostrarRetiro;
+	private JTextField txtNdeMatriculas;
+	private JTextField txtNdeRetiro;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgMatriculas dialog = new DlgMatriculas();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgMatriculas() {
+		setBounds(100, 100, 473, 300);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("Numero de Matriculas");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(10, 10, 137, 13);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Numero de retiro");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(10, 45, 137, 13);
+		getContentPane().add(lblNewLabel_1);
+		
+		btnMostrarMatricula = new JButton("Mostrar Matricula");
+		btnMostrarMatricula.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnMostrarMatricula.addActionListener(this);
+		btnMostrarMatricula.setBounds(292, 6, 134, 21);
+		getContentPane().add(btnMostrarMatricula);
+		
+		btnMostrarRetiro = new JButton("Mostrar Retiro");
+		btnMostrarRetiro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnMostrarRetiro.setBounds(292, 41, 134, 21);
+		getContentPane().add(btnMostrarRetiro);
+		
+		txtNdeMatriculas = new JTextField();
+		txtNdeMatriculas.setBounds(157, 7, 125, 19);
+		getContentPane().add(txtNdeMatriculas);
+		txtNdeMatriculas.setColumns(10);
+		
+		txtNdeRetiro = new JTextField();
+		txtNdeRetiro.setBounds(157, 42, 125, 19);
+		getContentPane().add(txtNdeRetiro);
+		txtNdeRetiro.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 100, 416, 153);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		scrollPane.setViewportView(txtResultado);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnMostrarMatricula) {
+			actionPerformedBtnNewButton(e);
+		}
+	}
+	protected void actionPerformedBtnNewButton(ActionEvent e) {
+	}
+}

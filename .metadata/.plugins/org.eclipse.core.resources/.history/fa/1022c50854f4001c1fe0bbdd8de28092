@@ -1,0 +1,67 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+
+public class DlgConsultarMatriculaRetiro extends JDialog {
+	private JLabel lblNewLabel;
+	private JTextField txtNumMatricula;
+	private JScrollPane scrollPane;
+	private JTextArea txtResultado;
+	private JButton btnMostrarMatricula;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			DlgConsultarMatriculaRetiro dialog = new DlgConsultarMatriculaRetiro();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public DlgConsultarMatriculaRetiro() {
+		setTitle("Consultar Matr\u00EDcula y Retiro");
+		setBounds(100, 100, 450, 461);
+		getContentPane().setLayout(null);
+		
+		lblNewLabel = new JLabel("N\u00FAmero de matr\u00EDcula");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 14, 69, 14);
+		getContentPane().add(lblNewLabel);
+		
+		txtNumMatricula = new JTextField();
+		txtNumMatricula.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtNumMatricula.setBounds(136, 11, 116, 20);
+		getContentPane().add(txtNumMatricula);
+		txtNumMatricula.setColumns(10);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 54, 414, 357);
+		getContentPane().add(scrollPane);
+		
+		txtResultado = new JTextArea();
+		scrollPane.setViewportView(txtResultado);
+		
+		btnMostrarMatricula = new JButton("Mostrar Matr\u00EDcula");
+		btnMostrarMatricula.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnMostrarMatricula.setBounds(296, 10, 128, 23);
+		getContentPane().add(btnMostrarMatricula);
+	}
+}

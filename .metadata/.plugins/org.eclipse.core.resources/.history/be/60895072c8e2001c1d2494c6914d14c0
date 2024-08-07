@@ -1,0 +1,5 @@
+package interfaces;
+
+public interface SolicitanteDAO {
+	public int guardar(Solicitante so);
+}

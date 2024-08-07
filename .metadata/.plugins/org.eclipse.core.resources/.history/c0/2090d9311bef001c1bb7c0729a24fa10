@@ -1,0 +1,63 @@
+package com.proyecto.gui;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import javax.swing.JTextField;
+
+public class PanelRegistro extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel lblCodAlumno;
+	private JComboBox cboCodAlumno;
+	private JButton btnBuscar;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+	private JTextField textField;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelRegistro() {
+		setBackground(new Color(0, 206, 209));
+		setBounds(0, 0, 543, 457);
+		setLayout(null);
+		setVisible(true);
+		
+		lblCodAlumno = new JLabel("C\u00F3digos Alumnos Registrados:");
+		lblCodAlumno.setBounds(10, 11, 190, 14);
+		add(lblCodAlumno);
+		
+		cboCodAlumno = new JComboBox();
+		cboCodAlumno.setBounds(298, 7, 96, 22);
+		add(cboCodAlumno);
+		
+		btnBuscar = new JButton("BUSCAR\r\n");
+		btnBuscar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnBuscar.setIcon(new ImageIcon(PanelRegistro.class.getResource("/img/buscar.png")));
+		btnBuscar.setBounds(404, 7, 129, 23);
+		add(btnBuscar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 45, 523, 401);
+		add(scrollPane);
+		
+		txtS = new JTextArea();
+		scrollPane.setViewportView(txtS);
+		
+		textField = new JTextField();
+		textField.setBounds(159, 8, 129, 22);
+		add(textField);
+		textField.setColumns(10);
+
+	}
+}

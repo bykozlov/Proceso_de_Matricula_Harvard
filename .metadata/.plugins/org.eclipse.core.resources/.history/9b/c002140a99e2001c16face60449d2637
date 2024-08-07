@@ -1,0 +1,143 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class FrmMatricular extends JFrame {
+
+	private JPanel contentPane;
+	private JLabel label1;
+	private JTextField txtNroMatricula;
+	private JLabel label2;
+	private JLabel label3;
+	private JComboBox cboCodAlumno;
+	private JComboBox cboCiclo;
+	private JButton btnBuscar;
+	private JButton btnAceptar;
+	private JTextField txtTexto;
+	private JScrollPane scrollPane;
+	private JButton btnAdicionar;
+	private JButton btnConsultar;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FrmMatricular frame = new FrmMatricular();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public FrmMatricular() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 830, 390);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		label1 = new JLabel("Número de Matrícula:");
+		label1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label1.setBounds(10, 15, 119, 14);
+		contentPane.add(label1);
+		
+		txtNroMatricula = new JTextField();
+		txtNroMatricula.setBounds(139, 13, 110, 20);
+		contentPane.add(txtNroMatricula);
+		txtNroMatricula.setColumns(10);
+		
+		label2 = new JLabel("Código de Alumno:");
+		label2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label2.setBounds(10, 49, 119, 14);
+		contentPane.add(label2);
+		
+		label3 = new JLabel("Ciclo:");
+		label3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label3.setBounds(10, 85, 119, 14);
+		contentPane.add(label3);
+		
+		cboCodAlumno = new JComboBox();
+		cboCodAlumno.setBounds(139, 46, 110, 22);
+		contentPane.add(cboCodAlumno);
+		
+		cboCiclo = new JComboBox();
+		cboCiclo.setBounds(139, 82, 110, 22);
+		contentPane.add(cboCiclo);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(259, 12, 150, 23);
+		contentPane.add(btnBuscar);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(419, 12, 150, 23);
+		contentPane.add(btnAceptar);
+		
+		txtTexto = new JTextField();
+		txtTexto.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtTexto.setColumns(10);
+		txtTexto.setBounds(259, 47, 310, 21);
+		contentPane.add(txtTexto);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 150, 794, 190);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Num. Matr\u00EDcula", "Cod. Alumno", "Ciclo", "Fecha", "Hora"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(121);
+		table.getColumnModel().getColumn(1).setPreferredWidth(142);
+		table.getColumnModel().getColumn(2).setPreferredWidth(124);
+		table.getColumnModel().getColumn(3).setPreferredWidth(126);
+		table.getColumnModel().getColumn(4).setPreferredWidth(109);
+		table.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		scrollPane.setViewportView(table);
+		
+		btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(654, 12, 150, 23);
+		contentPane.add(btnAdicionar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(654, 46, 150, 23);
+		contentPane.add(btnConsultar);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(654, 82, 150, 23);
+		contentPane.add(btnModificar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(654, 116, 150, 23);
+		contentPane.add(btnEliminar);
+	}
+}

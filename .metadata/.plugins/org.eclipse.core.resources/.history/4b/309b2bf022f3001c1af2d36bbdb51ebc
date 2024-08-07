@@ -1,0 +1,17 @@
+package controlador;
+
+import java.util.ArrayList;
+
+import entidad.Consulta;
+import interfaces.ConsultasDAO;
+
+
+public class MySqlConsultasDAO implements ConsultasDAO{
+
+	@Override
+	public ArrayList<Consulta> findAllEstado(String nombre, String estado) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

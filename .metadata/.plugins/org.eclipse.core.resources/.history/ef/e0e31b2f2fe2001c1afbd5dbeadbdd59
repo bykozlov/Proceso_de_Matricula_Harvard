@@ -1,0 +1,211 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import controlador.MySqlRegistroDAO;
+import entidad.Cifrador;
+import entidad.RegistrarUsuario;
+
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+
+public class frmRegistrar extends JFrame implements ActionListener {
+
+	private JPanel contentPane;
+	private JTextField txtUsuario;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtCorreo;
+	private JLabel lblNewLabel_6;
+	private JButton btnRegistrar;
+	private JPasswordField txtClave;
+	private JPasswordField txtConClave;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frmRegistrar frame = new frmRegistrar();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public frmRegistrar() {
+		setTitle("Registrar");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 442, 436);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 153, 204));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(224, 54, 86, 20);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Clave");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/contrasenas (1).png")));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(69, 90, 76, 26);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Confirmar clave ");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/contrasenas (1).png")));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(69, 127, 145, 40);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Nombre");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/Nombre.png")));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(69, 178, 76, 32);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Apellido");
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/Nombre.png")));
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(69, 221, 86, 30);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Correo");
+		lblNewLabel_5.setForeground(Color.WHITE);
+		lblNewLabel_5.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/Correo.png")));
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_5.setBounds(69, 275, 76, 24);
+		contentPane.add(lblNewLabel_5);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(224, 185, 86, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		txtApellido = new JTextField();
+		txtApellido.setBounds(224, 227, 86, 20);
+		contentPane.add(txtApellido);
+		txtApellido.setColumns(10);
+		
+		txtCorreo = new JTextField();
+		txtCorreo.setBounds(224, 278, 86, 20);
+		contentPane.add(txtCorreo);
+		txtCorreo.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/Usuario.png")));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(69, 48, 94, 31);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_6 = new JLabel("Registrate");
+		lblNewLabel_6.setForeground(Color.WHITE);
+		lblNewLabel_6.setToolTipText("");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_6.setBounds(151, 11, 94, 32);
+		contentPane.add(lblNewLabel_6);
+		
+		btnRegistrar = new JButton("Registrar");
+		btnRegistrar.addActionListener(this);
+		btnRegistrar.setIcon(new ImageIcon(frmRegistrar.class.getResource("/img/Registrar1.png")));
+		btnRegistrar.setBounds(141, 326, 129, 33);
+		contentPane.add(btnRegistrar);
+		
+		txtClave = new JPasswordField();
+		txtClave.setBounds(225, 98, 86, 20);
+		contentPane.add(txtClave);
+		
+		txtConClave = new JPasswordField();
+		txtConClave.setBounds(222, 142, 86, 20);
+		contentPane.add(txtConClave);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnRegistrar) {
+			actionPerformedBtnRegistrar(e);
+		}
+	}
+	protected void actionPerformedBtnRegistrar(ActionEvent e) {
+		MySqlRegistroDAO modsql = new MySqlRegistroDAO();
+		RegistrarUsuario mod = new RegistrarUsuario();
+
+		String clave = new String(txtClave.getPassword());
+		String conClave = new String(txtConClave.getPassword());
+
+
+		// valdiacion de campos
+		if (txtUsuario.getText().equals("") || txtClave.equals("") || txtConClave.equals("") || txtNombre.getText().equals("")
+				|| txtApellido.getText().equals("") || txtCorreo.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Hay campos vacios, debe lenar todos los campos");
+		} else {
+
+			if (clave.equals(conClave)) {
+				if (modsql.existeUsuario(txtUsuario.getText()) == 0) {
+					if (modsql.Email(txtCorreo.getText())) {
+						String nuevaCla = Cifrador.sha1(clave);
+						mod.setUsuario(txtUsuario.getText());
+						mod.setClave(nuevaCla);
+						mod.setNom(txtNombre.getText());
+						mod.setApe(txtApellido.getText());
+						mod.setCorreo(txtCorreo.getText());
+						mod.getTipo_usuario();
+
+						if (modsql.registrarUsuario(mod)) {
+							JOptionPane.showMessageDialog(null, "REGISTRO GUARDADO");
+							frmLogin.frmReg = null;
+							dispose();
+							limpiar();
+						} else {
+							JOptionPane.showConfirmDialog(null, "ERROR AL GUARDAR");
+						}
+					} else {
+						JOptionPane.showConfirmDialog(null, "EL correo electronico no es valido");
+					}
+				} else {
+					JOptionPane.showConfirmDialog(null, "El usuario ya existe");
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO COINCIDEN");
+			}
+		}
+	}
+	
+	private void limpiar() {
+		txtUsuario.setText("");
+		txtClave.setText("");
+		txtConClave.setText("");
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtCorreo.setText("");
+	}
+}
